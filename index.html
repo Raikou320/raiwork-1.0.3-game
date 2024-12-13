@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game with RaiWork V1.0.3</title>
+    <script src="https://raikou320.github.io/raiwork-v1.0.3/raiwork.js"></script>
+</head>
+<body>
+    <script>
+        //Créer une instance de Game
+        const game = new Game();
+        //Ajouter une scene nom, largueur, hauteur, couleur de fond
+        game.addScene('sceneOne', 800, 600, '#008800');
+        //Ajouter une entité rectangulaire
+        //nom, scene, x, y, largueur, hauteur, couleur
+        game.addRectangularEntity('player', 'sceneOne', 20, 200, 50, 50, 'red');
+        //Dessiner une scène
+        game.renderScene('sceneOne');
+        //Chercher une entité avec son nom
+        const player = game.findEntity('player')
+        //Faire bouger le joueur
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                player.x -= 5;
+            }
+            if (e.key === 'ArrowRight') {
+                player.x += 5;
+            }
+            game.renderScene('sceneOne');
+        });
+</script>
+</body>
+</html>
